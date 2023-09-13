@@ -21,7 +21,7 @@ jobs:
          node-version: 18
       - name: NPM CI
         run: npm ci
-      - name: Endor Labs Scan Push
+      - name: Endor Labs Watch
         if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
         uses: endorlabs/github-action@main
         with:
@@ -31,7 +31,7 @@ jobs:
           enable_github_action_token: "true"
           sarif_file: endorlabs.sarif
           additional_args: "--enable=git,analytics,secrets"
-      - name: Endor Labs Scan Push
+      - name: Endor Labs Scan PR to Default Branch
         if: github.event_name == 'pull_request'
         uses: endorlabs/github-action@main
         with:
